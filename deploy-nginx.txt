@@ -1,0 +1,40 @@
+Tatacara deploy ke Nginx dan implementasi firewall setelah aplikasi selesai dibuat
+
+1. Install Nginx, disini saya menggunakan homebrew:
+    brew install nginx
+
+2. Konfigurasi Nginx, sebelumnya nginx saya sudah konfigurasi file konfigurasi
+    nano /opt/homebrew/etc/nginx/servers/sites.conf
+
+    di dalam file sites.conf tambahkan konfigurasi dibawah ini agar aplikasi kita bisa berjalan di nginx
+    untuk implementasi firewall bisa menggunakan deny pada scope root untuk menolak semua IP Address atau allow
+    untuk membolehkan IP Address tertentu
+    
+    ```
+        server {
+            listen 80;
+            server_name www.my-domain.com;
+
+            deny all;    # Deny all requests
+
+            root /opt/homebrew/var/www/your-server-folder;
+
+            index index.html;
+
+            location / {         # Path to match for the API
+                    allow 1.2.3.4; $ Allow this IP
+                    proxy_pass http://my-blog:5050;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+            }
+        }
+    ```
+3. Test file konfigurasi yg sudah di buat tadi
+    nginx -t
+
+4. Jalankan atau restart nginx
+    sudo nginx | sudo nginx -s reload
+
+5. Sekarang aplikasi kita sudah bisa diakses lewat www.my-domain.com (dari server_name)

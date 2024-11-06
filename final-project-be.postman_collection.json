@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "6d086cd9-eecd-4f48-a045-4d48b370b31e",
+		"name": "final-project-be",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9698824"
+	},
+	"item": [
+		{
+			"name": "Login Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"admin@gmail.com\",\n    \"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5050/v1/mandalika/admin/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"v1",
+						"mandalika",
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Blog",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzMTk5NTViMC05YzMzLTExZWYtOGM1Mi04NTZjOTA4ZjFhZDIiLCJpc3MiOiJhZG1pbiIsImlhdCI6MTczMDg5NDE5MCwianRpIjoiMTVkNGNiMjctM2ZiMy00MTlmLWJjMGMtMDRjODFlZGI4ZWRjIn0.CXxmaaWrxGHqhfiNrTaGTpZr8giLCGZBQZ3k-7K9IDI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"The Ultimate Guide: Best Things to Do at a MotoGP Event\",\n    \"content\":\"MotoGP events aren’t just about watching the world’s fastest bikes race around a track—they’re thrilling,full-day experiences with a variety of attractions, activities, and ways to get close to the action. Whether you’re a first-timer or a seasoned fan, here’s a guide to the best things to do at a MotoGP event to make the most of your day!\",\n    \"category\":\"guide\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5050/v1/mandalika/admin/blog/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"v1",
+						"mandalika",
+						"admin",
+						"blog",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List FAQ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/v1/mandalika/public/faq/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"v1",
+						"mandalika",
+						"public",
+						"faq",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Blog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/v1/mandalika/public/blog/",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"v1",
+						"mandalika",
+						"public",
+						"blog",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Blog (With Auth)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzMTk5NTViMC05YzMzLTExZWYtOGM1Mi04NTZjOTA4ZjFhZDIiLCJpc3MiOiJhZG1pbiIsImlhdCI6MTczMDg5NDE5MCwianRpIjoiMTVkNGNiMjctM2ZiMy00MTlmLWJjMGMtMDRjODFlZGI4ZWRjIn0.CXxmaaWrxGHqhfiNrTaGTpZr8giLCGZBQZ3k-7K9IDI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/v1/mandalika/public/blog/admin",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"v1",
+						"mandalika",
+						"public",
+						"blog",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
